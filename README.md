@@ -2,7 +2,7 @@
 
 [English](#english) · [Français](#francais)
 
-<img width="1445" height="847" alt="template-veterinaire" src="https://github.com/user-attachments/assets/a2cc2d4a-dde5-4ad4-bfd6-4e486d7b8f5d" />
+<img width="1441" height="847" alt="template-veterinaire" src="https://github.com/user-attachments/assets/05a94ee7-7774-4712-a9cc-2bc22d132981" />
 
 <a id="english"></a>
 ## English
