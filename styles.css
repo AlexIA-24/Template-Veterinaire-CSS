@@ -1,13 +1,13 @@
 /* ═══════════════════════════════════════════════════════════
-   Clinique vétérinaire de Sauvabelin — Lausanne
+   Sauvabelin veterinary clinic — Lausanne
    Designed by Studio Alpix
-   Grille suisse, filets 1px, données en monospace.
+   Swiss grid, 1px rules, data set in monospace.
    ═══════════════════════════════════════════════════════════ */
 
-/* ── 1. Jetons ───────────────────────────────────────────── */
+/* ── 1. Tokens ───────────────────────────────────────────── */
 :root{
-  /* Ardoise & cuivre. L'ardoise porte l'identité (boutons, libellés,
-     logo) ; le cuivre ne sert qu'aux urgences et aux chiffres. */
+  /* Slate & copper. Slate carries the identity (buttons, labels,
+     logo); copper is reserved for emergencies and figures. */
   --encre:#1A1E24;
   --ardoise:#34506B;
   --ardoise-clair:#48688A;
@@ -67,7 +67,7 @@ address{font-style:normal}
 }
 .skip:focus{left:0}
 
-/* ── 3. Typographie transversale ─────────────────────────── */
+/* ── 3. Shared typography ────────────────────────────────── */
 .etiquette{
   font-family:var(--data);
   font-size:11.5px;
@@ -101,7 +101,7 @@ address{font-style:normal}
 
 .lead{font-size:clamp(18px,1.5vw,20.5px);line-height:1.55}
 
-/* ── 4. Boutons et liens ─────────────────────────────────── */
+/* ── 4. Buttons and links ────────────────────────────────── */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   gap:10px;
@@ -117,7 +117,7 @@ address{font-style:normal}
 .btn--lg{padding:16px 28px;font-size:13.5px}
 .btn--plein{background:var(--ardoise);color:var(--papier-blanc)}
 .btn--plein:hover{background:var(--encre)}
-.btn--fil{border-color:var(--filet);color:var(--ardoise);background:transparent}
+.btn--fil{border-color:rgba(52,80,107,.42);color:var(--ardoise);background:var(--papier-blanc);font-weight:500}
 .btn--fil:hover{border-color:var(--ardoise);background:var(--mousse-pale)}
 .btn--encre{background:var(--encre);color:var(--cuivre)}
 .btn--encre:hover{background:#000}
@@ -140,15 +140,15 @@ address{font-style:normal}
 .lien-fleche--encre{color:var(--encre);border-color:rgba(26,30,36,.28)}
 .lien-fleche--encre:hover{border-color:var(--encre)}
 
-/* ── 5. Pastille de statut ───────────────────────────────── */
+/* ── 5. Status dot ───────────────────────────────────────── */
 .pastille{
   width:7px;height:7px;border-radius:50%;
   background:var(--texte-doux);
   flex:none;display:inline-block;
 }
 .pastille--lg{width:10px;height:10px}
-/* L'état est porté par le mot « Ouvert » / « Fermé », jamais par la
-   couleur seule : la pastille reste dans la palette. */
+/* Status is carried by the word « Ouvert » / « Fermé », never by
+   colour alone: the dot stays within the palette. */
 [data-ouvert="oui"] .pastille{background:var(--ardoise);box-shadow:0 0 0 0 rgba(52,80,107,.5);animation:battement 2.6s var(--ease) infinite}
 [data-ouvert="non"] .pastille{background:var(--terre)}
 @keyframes battement{
@@ -156,7 +156,7 @@ address{font-style:normal}
   100%{box-shadow:0 0 0 0 rgba(52,80,107,0)}
 }
 
-/* ── 6. Bandeau utilitaire ───────────────────────────────── */
+/* ── 6. Utility bar ──────────────────────────────────────── */
 .utilbar{background:var(--encre);color:rgba(245,243,239,.7)}
 .utilbar__in{
   display:flex;align-items:center;gap:26px;
@@ -167,7 +167,7 @@ address{font-style:normal}
 .utilbar__item a:hover{color:var(--cuivre)}
 .utilbar__spacer{margin-left:auto;display:flex;align-items:center;gap:9px;color:var(--papier)}
 
-/* ── 7. En-tête ──────────────────────────────────────────── */
+/* ── 7. Header ───────────────────────────────────────────── */
 .entete{
   position:sticky;top:0;z-index:100;
   background:rgba(245,243,239,.88);
@@ -244,7 +244,7 @@ address{font-style:normal}
 }
 .hero__boutons{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
 
-/* Panneau « état de la clinique » — signature */
+/* « État de la clinique » panel — signature piece */
 .etat{
   background:var(--papier-blanc);
   border:1px solid var(--filet);
@@ -301,7 +301,7 @@ address{font-style:normal}
 }
 .etat__urgence-num{font-family:var(--data);font-size:14px;font-variant-numeric:tabular-nums}
 
-/* Bande de chiffres */
+/* Figures strip */
 .chiffres{
   display:grid;grid-template-columns:repeat(4,1fr);
   border-top:1px solid var(--filet);
@@ -324,7 +324,7 @@ address{font-style:normal}
   color:var(--texte-doux);
 }
 
-/* ── 9. Bandeau urgences ─────────────────────────────────── */
+/* ── 9. Emergency band ───────────────────────────────────── */
 .alerte{background:var(--cuivre);color:var(--encre)}
 .alerte__in{
   display:grid;
@@ -340,14 +340,14 @@ address{font-style:normal}
 .alerte__texte{font-size:15px;line-height:1.55}
 
 /* ── 10. Sections ────────────────────────────────────────── */
-/* Alternance des fonds : crème (défaut) → blanc → encre → crème → blanc → crème. */
+/* Background rotation: cream (default) → white → ink → cream → white → cream. */
 .section{padding-block:var(--rythme)}
 .section--serre{padding-block:clamp(52px,6vw,84px)}
 .section--blanc{background:var(--blanc);border-block:1px solid var(--filet)}
 .section--papier{background:var(--blanc);border-block:1px solid var(--filet)}
 .section--fonce{background:var(--encre);color:var(--papier)}
 
-/* ── 11. La clinique ─────────────────────────────────────── */
+/* ── 11. The clinic ──────────────────────────────────────── */
 .clinique__grille{
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
@@ -372,7 +372,7 @@ address{font-style:normal}
 }
 .equipements p{font-size:14.5px;line-height:1.5;color:var(--texte-doux)}
 
-/* ── 12. Dossier par espèce — signature ──────────────────── */
+/* ── 12. Species record — signature ──────────────────────── */
 .dossier{
   border:1px solid var(--filet-fonce);
   border-radius:var(--r);
@@ -449,7 +449,7 @@ address{font-style:normal}
 .fiche:not([hidden]){animation:apparait .34s var(--ease) both}
 @keyframes apparait{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 
-/* ── 13. Équipe ──────────────────────────────────────────── */
+/* ── 13. Team ────────────────────────────────────────────── */
 .equipe{
   display:grid;grid-template-columns:repeat(3,1fr);
   border-top:1px solid var(--filet);
@@ -464,7 +464,7 @@ address{font-style:normal}
 }
 .soignant:hover{background:var(--mousse-pale)}
 
-/* Portrait en duotone : unifie six photos venues de six séances. */
+/* Duotone portrait: unifies six photos from six different shoots. */
 .portrait{
   position:relative;
   margin:0 -28px 24px;
@@ -512,7 +512,7 @@ address{font-style:normal}
   font-family:var(--data);font-size:11.5px;letter-spacing:.09em;color:var(--texte-doux);
 }
 
-/* ── 14. Rendez-vous ─────────────────────────────────────── */
+/* ── 14. Appointments ────────────────────────────────────── */
 .rdv{
   display:grid;
   grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
@@ -567,7 +567,7 @@ address{font-style:normal}
 .formulaire__note[data-etat="ok"]{color:var(--ardoise)}
 .formulaire__note[data-etat="erreur"]{color:#A6321F}
 
-/* ── 15. Infos pratiques ─────────────────────────────────── */
+/* ── 15. Practical info ──────────────────────────────────── */
 .pratique{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,28px)}
 .carte-info{
   background:var(--papier-blanc);
@@ -614,7 +614,7 @@ address{font-style:normal}
   font-family:var(--data);font-size:12.5px;line-height:1.75;color:var(--texte-doux);
 }
 
-/* ── 16. Avis ────────────────────────────────────────────── */
+/* ── 16. Testimonials ────────────────────────────────────── */
 .avis{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,40px)}
 .avis li{border-top:2px solid var(--encre);padding-top:22px}
 .avis blockquote{
@@ -628,7 +628,7 @@ address{font-style:normal}
   color:var(--texte-doux);
 }
 
-/* ── 17. Pied de page ────────────────────────────────────── */
+/* ── 17. Footer ──────────────────────────────────────────── */
 .pied{background:var(--encre);color:var(--papier);padding-top:clamp(56px,6vw,84px)}
 .pied__haut{
   display:grid;
@@ -650,8 +650,8 @@ address{font-style:normal}
 .pied__cols a{font-size:14.5px;color:rgba(245,243,239,.68);transition:color .2s var(--ease)}
 .pied__cols a:hover{color:var(--papier)}
 
-/* Ligne 1 : copyright à gauche, pages légales à droite.
-   Ligne 2 : la signature, sur toute la largeur, calée à droite. */
+/* Row 1: copyright left, legal pages right.
+   Row 2: the signature, full width, centred. */
 .pied__bas{
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
@@ -668,14 +668,14 @@ address{font-style:normal}
 .pied__credit a{color:var(--cuivre)}
 .pied__credit a:hover{color:var(--papier)}
 
-/* ── 18. Animations d'entrée ─────────────────────────────── */
+/* ── 18. Entrance animations ─────────────────────────────── */
 .anim{animation:monte .68s var(--ease) both;animation-delay:var(--d,0ms)}
 @keyframes monte{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 .revele{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .revele.vu{opacity:1;transform:none}
 
-/* ── 19. Adaptatif ───────────────────────────────────────── */
+/* ── 19. Responsive ──────────────────────────────────────── */
 @media (max-width:1080px){
   .hero__grille{grid-template-columns:1fr}
   .etat{max-width:460px}
