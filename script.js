@@ -1,11 +1,11 @@
 /* ═══════════════════════════════════════════════════════════
-   Clinique vétérinaire de Sauvabelin — comportements
+   Sauvabelin veterinary clinic — behaviours
    Designed by Studio Alpix
    ═══════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
-  /* ── Horaires réels de la clinique (0 = dimanche) ───────── */
+  /* ── Real clinic opening hours (0 = Sunday) ─────────────── */
   const HORAIRES = {
     0: { plages: [],                                      texte: 'Fermé — garde vétérinaire' },
     1: { plages: [[480, 720], [810, 1110]],               texte: '08:00 – 12:00 · 13:30 – 18:30' },
@@ -17,7 +17,7 @@
   };
   const JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 
-  /* Heure locale de Lausanne, quel que soit le fuseau du visiteur. */
+  /* Lausanne local time, whatever the visitor's timezone. */
   function maintenantLausanne() {
     const parties = new Intl.DateTimeFormat('fr-CH', {
       timeZone: 'Europe/Zurich',
@@ -35,7 +35,7 @@
 
   const enHM = (m) => String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
 
-  /* Arrondit au prochain quart d'heure disponible dans une plage. */
+  /* Rounds up to the next quarter hour available within a range. */
   function prochainCreneau(jour, minutes) {
     for (let saut = 0; saut < 8; saut++) {
       const j = (jour + saut) % 7;
@@ -58,7 +58,7 @@
     const plageOuverte = jourCourant.plages.find(([d, f]) => minutes >= d && minutes < f);
     const ouvert = Boolean(plageOuverte);
 
-    /* Message précis plutôt que « ouvert / fermé » tout court. */
+    /* A precise message rather than a bare « ouvert / fermé ». */
     let detail;
     if (ouvert) {
       const reste = plageOuverte[1] - minutes;
@@ -104,7 +104,7 @@
   majStatut();
   setInterval(majStatut, 30000);
 
-  /* ── Onglets par espèce (signature) ─────────────────────── */
+  /* ── Species tabs (signature piece) ─────────────────────── */
   const onglets = Array.from(document.querySelectorAll('.onglet'));
 
   function choisir(index) {
@@ -131,7 +131,7 @@
     });
   });
 
-  /* ── Menu mobile ────────────────────────────────────────── */
+  /* ── Mobile menu ────────────────────────────────────────── */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
 
@@ -146,7 +146,7 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') basculer(false); });
   }
 
-  /* ── Révélation au défilement ───────────────────────────── */
+  /* ── Scroll reveal ──────────────────────────────────────── */
   const doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (!doux && 'IntersectionObserver' in window) {
@@ -165,7 +165,7 @@
     cibles.forEach((n) => observateur.observe(n));
   }
 
-  /* ── Formulaire de demande de rendez-vous ───────────────── */
+  /* ── Appointment request form ───────────────────────────── */
   const formulaire = document.getElementById('formulaire');
   const note = document.getElementById('formulaire-note');
 
@@ -190,7 +190,7 @@
     });
   }
 
-  /* Date minimale : aujourd'hui. */
+  /* Minimum date: today. */
   const champDate = document.getElementById('f-date');
   if (champDate) {
     champDate.min = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Zurich' }).format(new Date());
